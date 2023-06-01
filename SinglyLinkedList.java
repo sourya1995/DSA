@@ -121,4 +121,6 @@ public class SinglyLinkedList<T> {
         }
         System.out.print(temp.data.toString() + "-> null");
     }
+
+    
 }
