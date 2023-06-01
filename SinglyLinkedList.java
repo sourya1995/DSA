@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class SinglyLinkedList<T> {
     public class Node {
         public T data;
@@ -11,6 +13,9 @@ public class SinglyLinkedList<T> {
         headNode = null;
         size = 0;
     }
+
+    public Node getHeadNode() { return headNode; }
+    public int getSize() { return size; }
 
     public boolean isEmpty() { // if head is empty, headNode is null and list is empty
         if (headNode == null) {
@@ -131,6 +136,26 @@ public class SinglyLinkedList<T> {
             current = current.nextNode; //shift
         }
         return count;
+    }
+
+    public void removeDuplicatesWithHashing(){
+        Node current = this.headNode;
+        Node prevNode = this.headNode;
+
+        HashSet<T> visitedNodes = new HashSet<T>();
+        if(!isEmpty() && current.nextNode != null) {
+            while(current != null){
+                if(visitedNodes.contains(current.data)){
+                    prevNode.nextNode = current.nextNode;
+                    current = current.nextNode; //DELETION 
+                } else {
+                    visitedNodes.add(current.data);
+                    prevNode = current;
+                    current = current.nextNode; //SHIFT BY 1
+                }
+            }
+
+
     }
 
 
