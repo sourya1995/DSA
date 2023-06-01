@@ -14,8 +14,13 @@ public class SinglyLinkedList<T> {
         size = 0;
     }
 
-    public Node getHeadNode() { return headNode; }
-    public int getSize() { return size; }
+    public Node getHeadNode() {
+        return headNode;
+    }
+
+    public int getSize() {
+        return size;
+    }
 
     public boolean isEmpty() { // if head is empty, headNode is null and list is empty
         if (headNode == null) {
@@ -96,13 +101,13 @@ public class SinglyLinkedList<T> {
         Node currentNode = this.headNode;
         Node previousNode = null;
 
-        if(currentNode.data.equals(value)){
+        if (currentNode.data.equals(value)) {
             deleteAtHead();
             return; //
         }
 
         while (currentNode != null) {
-            if (value.equals(currentNode.data)){
+            if (value.equals(currentNode.data)) {
                 previousNode.nextNode = currentNode.nextNode;
                 size--;
                 return; //
@@ -131,32 +136,31 @@ public class SinglyLinkedList<T> {
         Node current = this.headNode;
         int count = 0;
 
-        while(current != null) {
+        while (current != null) {
             count++;
-            current = current.nextNode; //shift
+            current = current.nextNode; // shift
         }
         return count;
     }
 
-    public void removeDuplicatesWithHashing(){
+    public void removeDuplicatesWithHashing() {
         Node current = this.headNode;
         Node prevNode = this.headNode;
 
         HashSet<T> visitedNodes = new HashSet<T>();
-        if(!isEmpty() && current.nextNode != null) {
-            while(current != null){
-                if(visitedNodes.contains(current.data)){
+        if (!isEmpty() && current.nextNode != null) {
+            while (current != null) {
+                if (visitedNodes.contains(current.data)) {
                     prevNode.nextNode = current.nextNode;
-                    current = current.nextNode; //DELETION 
+                    current = current.nextNode; // DELETION
                 } else {
                     visitedNodes.add(current.data);
                     prevNode = current;
-                    current = current.nextNode; //SHIFT BY 1
+                    current = current.nextNode; // SHIFT BY 1
                 }
             }
 
+        }
 
     }
-
-
 }

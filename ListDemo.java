@@ -93,17 +93,17 @@ class ListDemo {
         return result;
     }
 
-    public static <T> Object nthElementFromEnd(SinglyLinkedList<T> list, int n){
+    public static <T> Object nthElementFromEnd(SinglyLinkedList<T> list, int n) {
         int size = list.getSize();
         n = size - n + 1;
-        if(size == 0 || n > size){
+        if (size == 0 || n > size) {
             return null;
         }
         SinglyLinkedList.Node current = list.getHeadNode();
 
         int count = 1;
         while (current != null) {
-            if(count == n){
+            if (count == n) {
                 return current.data;
             }
             count++;
@@ -112,4 +112,24 @@ class ListDemo {
         return null;
 
     }
+
+    public static <T> boolean isPalindrome(DoublyLinkedListWithTail<T> list) {
+        DoublyLinkedListWithTail<T>.Node start = list.getHeadNode();
+        DoublyLinkedListWithTail<T>.Node end = list.getHeadNode();
+        if (start == null) {
+            return true;
+        }
+
+        while (start != null) {
+            if (start.data != end.data) {
+                return false;
+            }
+            start = start.nextNode;
+            end = end.prevNode;
+
+        }
+        return true;
+
+    }
+
 }

@@ -8,6 +8,9 @@ public class DoublyLinkedList<T> {
     public Node headNode;
     public int size;
 
+    public Node getHeadNode() { return headNode; }
+    public int getSize() { return size; }
+
     public DoublyLinkedList(){
         this.headNode = null;
     }
