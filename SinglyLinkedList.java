@@ -45,6 +45,22 @@ public class SinglyLinkedList<T> {
         size++;
     }
 
+    public void insertAfter(T data, T previous){
+        Node newNode = new Node();
+        newNode.data = data;
+        Node currentNode = this.headNode; //start at the head
+
+        while(currentNode != null && !currentNode.data.equals(previous)){
+            currentNode = currentNode.nextNode;
+        } //traverse until the data at currentNode equals previous, that is, data specified
+
+        if(currentNode != null){
+            newNode.nextNode = currentNode.nextNode;
+            currentNode.nextNode = newNode;
+            size++;
+        }
+    }
+
     public void printList() {
         if(isEmpty()){
             System.out.println("List is empty");
