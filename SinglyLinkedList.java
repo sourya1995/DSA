@@ -122,5 +122,16 @@ public class SinglyLinkedList<T> {
         System.out.print(temp.data.toString() + "-> null");
     }
 
-    
+    public int length() {
+        Node current = this.headNode;
+        int count = 0;
+
+        while(current != null) {
+            count++;
+            current = current.nextNode; //shift
+        }
+        return count;
+    }
+
+
 }
