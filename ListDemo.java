@@ -25,5 +25,22 @@ class ListDemo {
         return mid.data;
     }
 
+    public static <T> void removeDuplicates(SinglyLinkedList<T> list){
+        SinglyLinkedList<T>.Node current = list.headNode;
+        SinglyLinkedList<T>.Node compare = null;
+
+        while(current != null && current.nextNode != null) {
+            compare = current;
+            while(compare.nextNode != null){
+                if(current.data.equals(compare.nextNode.data)){
+                    compare.nextNode = compare.nextNode.nextNode; //shift right pointer by one
+                } else {
+                    compare = compare.nextNode; //shift by one
+                }
+            }
+            current = current.nextNode;
+        }
+    }
+
 
 }
