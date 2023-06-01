@@ -92,4 +92,24 @@ class ListDemo {
         }
         return result;
     }
+
+    public static <T> Object nthElementFromEnd(SinglyLinkedList<T> list, int n){
+        int size = list.getSize();
+        n = size - n + 1;
+        if(size == 0 || n > size){
+            return null;
+        }
+        SinglyLinkedList.Node current = list.getHeadNode();
+
+        int count = 1;
+        while (current != null) {
+            if(count == n){
+                return current.data;
+            }
+            count++;
+            current = current.nextNode;
+        }
+        return null;
+
+    }
 }
