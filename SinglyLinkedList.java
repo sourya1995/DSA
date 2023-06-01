@@ -61,6 +61,18 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    public boolean searchNode(T data) {
+        Node currentNode = this.headNode;
+
+        while(currentNode != null){
+            if(currentNode.data.equals(data)){
+                return true;
+            }
+            currentNode = currentNode.nextNode; //move to the next node
+        }
+        return false;
+    }
+
     public void printList() {
         if(isEmpty()){
             System.out.println("List is empty");
