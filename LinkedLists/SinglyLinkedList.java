@@ -1,3 +1,4 @@
+package LinkedLists;
 import java.util.HashSet;
 
 public class SinglyLinkedList<T> {

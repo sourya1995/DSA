@@ -1,3 +1,4 @@
+package LinkedLists;
 public class DoublyLinkedList<T> {
     public class Node {
         public T data;
