@@ -83,6 +83,30 @@ public class SinglyLinkedList<T> {
 
     }
 
+    public void deleteByValue(T value) {
+        if (isEmpty()) {
+            return; //
+        }
+
+        Node currentNode = this.headNode;
+        Node previousNode = null;
+
+        if(currentNode.data.equals(value)){
+            deleteAtHead();
+            return; //
+        }
+
+        while (currentNode != null) {
+            if (value.equals(currentNode.data)){
+                previousNode.nextNode = currentNode.nextNode;
+                size--;
+                return; //
+            }
+            previousNode = currentNode;
+            currentNode = currentNode.nextNode;
+        }
+    }
+
     public void printList() {
         if (isEmpty()) {
             System.out.println("List is empty");
