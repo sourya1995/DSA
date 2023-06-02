@@ -27,5 +27,7 @@ public class QueueWithStack <V>{
         while(!stack2.isEmpty()){
             stack1.push(stack2.pop());
         }
+
+        return result;
     }
 }
