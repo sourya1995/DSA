@@ -18,7 +18,7 @@ public class Stack<V> {
         return currentSize;
     }
 
-    public int getCapacity() {
+    public int getMaxSize() {
         return maxSize;
     }
 
