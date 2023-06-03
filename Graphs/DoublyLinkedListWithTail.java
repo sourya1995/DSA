@@ -11,14 +11,14 @@ public class DoublyLinkedListWithTail<T> {
     public Node tailNode;
     public int size;
 
-    public DoublyLinkedListWithTail(){
+    public DoublyLinkedListWithTail() {
         this.headNode = null;
         this.tailNode = null;
         this.size = 0;
     }
 
     public boolean isEmpty() {
-        if(headNode == null && tailNode == null){
+        if (headNode == null && tailNode == null) {
             return true;
         }
         return false;
@@ -27,15 +27,17 @@ public class DoublyLinkedListWithTail<T> {
     public Node getHeadNode() {
         return headNode;
     }
+
     public Node getTailNode() {
         return tailNode;
     }
+
     public int getSize() {
         return size;
     }
 
-    public void printList(){
-        if(isEmpty()){
+    public void printList() {
+        if (isEmpty()) {
             System.out.println("List is empty");
             return;
         }
@@ -43,31 +45,46 @@ public class DoublyLinkedListWithTail<T> {
         Node temp = headNode;
         System.out.println("List: null <- ");
 
-        while(temp.nextNode != null){
-            System.out.println(temp.data.toString() +"<->");
+        while (temp.nextNode != null) {
+            System.out.println(temp.data.toString() + "<->");
             temp = temp.nextNode;
         }
 
         System.out.println(temp.data.toString() + " -> Null");
     }
 
-    public void insertAtHead(T data){
+    public void printListReverse() {
+        if (isEmpty()) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        Node temp = tailNode;
+        System.out.println("List: null <- ");
+
+        while (temp.prevNode != null) {
+            System.out.print(temp.data.toString() + " <->");
+            temp = temp.prevNode;
+        }
+        System.out.println(temp.data.toString() + "-> null");
+    }
+
+    public void insertAtHead(T data) {
         Node newNode = new Node();
         newNode.data = data;
         newNode.nextNode = this.headNode;
         newNode.prevNode = null;
-        if(headNode != null){
+        if (headNode != null) {
             headNode.prevNode = newNode;
-        }
-        else {
+        } else {
             tailNode = newNode;
         }
         this.headNode = newNode;
         size++;
     }
 
-    public void insertAtEnd(T data){
-        if(isEmpty()){
+    public void insertAtEnd(T data) {
+        if (isEmpty()) {
             insertAtHead(data);
             return;
         }
@@ -81,33 +98,75 @@ public class DoublyLinkedListWithTail<T> {
         size++;
     }
 
-    public void deleteAtHead(){
-        if(isEmpty()){
+    public void deleteAtHead() {
+        if (isEmpty()) {
             return;
         }
 
         headNode = headNode.nextNode;
-        if(headNode == null){
+        if (headNode == null) {
             tailNode = null;
-        }
-        else{
+        } else {
             headNode.prevNode = null;
         }
         size--;
     }
 
-    public void deleteAtTail(){
-        if(isEmpty()){
+    public void deleteAtTail() {
+        if (isEmpty()) {
             return;
         }
         tailNode = tailNode.prevNode;
-        if(tailNode == null){
+        if (tailNode == null) {
             headNode = null;
-        }
-        else{
+        } else {
             tailNode.nextNode = null;
         }
         size--;
     }
 
+    public void deleteByValue(T data) {
+        if (isEmpty()) {
+            return;
+        }
+
+        Node currentNode = this.headNode;
+        if (currentNode.data.equals(data)) {
+            deleteAtHead();
+            return;
+        }
+
+        while (currentNode != null) {
+            if (data.equals(currentNode.data)) {
+                currentNode.prevNode.nextNode = currentNode.nextNode;
+                if (currentNode.nextNode != null) {
+                    currentNode.nextNode.prevNode = currentNode.prevNode;
+                }
+            }
+            currentNode = currentNode.nextNode;
+        }
+
+    }
+
+    public void insertAfter(T data) {
+
+
+        Node newNode = new Node();
+        newNode.data = data;
+        Node currentNode = this.headNode; // start at the head
+
+        while (currentNode != null && !currentNode.data.equals(data)) {
+            currentNode = currentNode.nextNode;
+           
+        } // traverse until the data at currentNode equals previous, that is, data
+          // specified
+
+        if (currentNode != null && currentNode.nextNode != null) {
+            newNode.prevNode = currentNode;
+            newNode.nextNode = currentNode.nextNode;
+            currentNode.nextNode.prevNode = newNode;
+            currentNode.nextNode = newNode;
+            size++;
+        }
+    }
 }

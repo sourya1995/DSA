@@ -42,4 +42,8 @@ public class BreadthFirstSearch {
         }
         return result;
     }
+
+    public static void removeEdge(Graph g, int source, int destination){
+        g.adjacencyList[source].deleteByValue(destination);
+    }
 }
