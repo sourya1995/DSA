@@ -32,7 +32,7 @@ public class DepthFirstSearch {
                 temp = g.adjacencyList[current_node].headNode;
 
             while (temp != null) {
-                if (!visited[temp.data]) {
+                if (!visited[temp.data]) { //push node ONLY if NOT visited
                     stack.push(temp.data);
                 }
                 temp = temp.nextNode;
