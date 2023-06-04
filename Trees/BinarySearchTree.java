@@ -149,4 +149,26 @@ public class BinarySearchTree {
         printTree(current.getRightChild());
     }
 
+    public static void preTraverse(Node root){
+        if(root == null) return;
+        System.out.println(root.getData() + ",");
+        preTraverse(root.getLeftChild());
+        preTraverse(root.getRightChild());
+    }
+
+    public static void inOrderTraverse(Node root){
+        if(root == null) return;
+        inOrderTraverse(root.getLeftChild());
+        System.out.println(root.getData() + ",");
+        inOrderTraverse(root.getRightChild());
+    }
+
+    public static void postOrderTraverse(Node root){
+        if(root == null) return;
+
+        postOrderTraverse(root.getLeftChild());
+        postOrderTraverse(root.getRightChild());
+        System.out.println(root.getData() + ",");
+    }
+
 }
