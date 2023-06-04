@@ -88,7 +88,7 @@ public class BinarySearchTree {
             return false;
         }
 
-        else if (currentNode.getLeftChild() == null && currentNode.getRightChild() == null) {
+        else if (currentNode.getLeftChild() == null && currentNode.getRightChild() == null) { //LEAF NODE
             if (root.getData() == currentNode.getData()) {
                 setRoot(null);
                 return true;
@@ -99,7 +99,7 @@ public class BinarySearchTree {
                 parent.setRightChild(null);
                 return true;
             }
-        } else if (currentNode.getRightChild() == null) {
+        } else if (currentNode.getRightChild() == null) {  //NO RIGHT CHILD
             if (root.getData() == currentNode.getData()) {
                 setRoot(currentNode.getLeftChild());
                 return true;
@@ -110,7 +110,7 @@ public class BinarySearchTree {
                 parent.setRightChild(currentNode.getLeftChild());
                 return true;
             }
-        } else if (currentNode.getLeftChild() == null) {
+        } else if (currentNode.getLeftChild() == null) {  //NO LEFT CHILD
             if (root.getData() == currentNode.getData()) {
                 setRoot(currentNode.getRightChild());
                 return true;
