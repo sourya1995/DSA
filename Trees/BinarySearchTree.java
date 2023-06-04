@@ -171,4 +171,12 @@ public class BinarySearchTree {
         System.out.println(root.getData() + ",");
     }
 
+    public static int findMin(Node root){
+        if(root == null) return -1;
+        while(root.getLeftChild() != null){
+            root = root.getLeftChild();
+        }
+        return root.getData();
+    }
+
 }

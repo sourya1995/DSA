@@ -67,5 +67,14 @@ public class BinarySearchTreeRecursive {
         printTree(current.getLeftChild());
         printTree(current.getRightChild());
     }
+
+    public static int findMin(Node root){
+        if(root == null)
+            return -1;
+        else if(root.getLeftChild() == null)
+            return root.getData();
+        else 
+            return findMin(root.getLeftChild());
+    }
     
 }
