@@ -1,5 +1,7 @@
 package Tries;
 
+import java.util.ArrayList;
+
 public class Trie {
     private TrieNode root;
     Trie(){
@@ -114,5 +116,43 @@ public class Trie {
         return result; //this is an exponential algorithm!
     }
 
+
+    private static void getWords(TrieNode root, ArrayList<String> result, int level, char[] str){
+       if(root.isEndWord){
+        String temp ="";
+        for(int x = 0; x < level; x++){
+            temp += Character.toString(str[x]);
+        }
+        result.add(temp);
+       }
+
+       for(int i = 0; i< 26; i++){
+        if(root.children[i] != null){
+            str[level] = (char)[i + 'a'];
+            getWords(root.children[i], result, level + 1, str);
+        }
+       }
+    }
+    public static ArrayList<String> findWords(TrieNode root){
+        ArrayList<String> result = new ArrayList<String>();
+        char[] chararr = new char[20];
+        getWords(root, result, 0, chararr);
+        return result;
+    }
+
+    public static ArrayList<String> sortArray(String[] arr){
+        ArrayList<String> result = new ArrayList<String>();
+        Trie trie = new Trie();
+        for(int x= 0; x < arr.length; x++){
+            trie.insert(arr[x]);
+        }
+        char[] chararr = new char[20];
+        getWords(trie.getRoot(), result, 0, chararr);
+        return result;
+    }
+
+    private TrieNode getRoot() {
+        return this.root;
+    }
   
 }
