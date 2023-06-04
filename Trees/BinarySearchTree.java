@@ -88,7 +88,7 @@ public class BinarySearchTree {
             return false;
         }
 
-        else if (currentNode.getLeftChild() == null && currentNode.getRightChild() == null) { //LEAF NODE
+        else if (currentNode.getLeftChild() == null && currentNode.getRightChild() == null) { // LEAF NODE
             if (root.getData() == currentNode.getData()) {
                 setRoot(null);
                 return true;
@@ -99,7 +99,7 @@ public class BinarySearchTree {
                 parent.setRightChild(null);
                 return true;
             }
-        } else if (currentNode.getRightChild() == null) {  //NO RIGHT CHILD
+        } else if (currentNode.getRightChild() == null) { // NO RIGHT CHILD
             if (root.getData() == currentNode.getData()) {
                 setRoot(currentNode.getLeftChild());
                 return true;
@@ -110,7 +110,7 @@ public class BinarySearchTree {
                 parent.setRightChild(currentNode.getLeftChild());
                 return true;
             }
-        } else if (currentNode.getLeftChild() == null) {  //NO LEFT CHILD
+        } else if (currentNode.getLeftChild() == null) { // NO LEFT CHILD
             if (root.getData() == currentNode.getData()) {
                 setRoot(currentNode.getRightChild());
                 return true;
@@ -149,74 +149,104 @@ public class BinarySearchTree {
         printTree(current.getRightChild());
     }
 
-    public static void preTraverse(Node root){
-        if(root == null) return;
+    public static void preTraverse(Node root) {
+        if (root == null)
+            return;
         System.out.println(root.getData() + ",");
         preTraverse(root.getLeftChild());
         preTraverse(root.getRightChild());
     }
 
-    public static void inOrderTraverse(Node root){
-        if(root == null) return;
+    public static void inOrderTraverse(Node root) {
+        if (root == null)
+            return;
         inOrderTraverse(root.getLeftChild());
         System.out.println(root.getData() + ",");
         inOrderTraverse(root.getRightChild());
     }
 
-    public static void postOrderTraverse(Node root){
-        if(root == null) return;
+    public static void postOrderTraverse(Node root) {
+        if (root == null)
+            return;
 
         postOrderTraverse(root.getLeftChild());
         postOrderTraverse(root.getRightChild());
         System.out.println(root.getData() + ",");
     }
 
-    public static int findMin(Node root){
-        if(root == null) return -1;
-        while(root.getLeftChild() != null){
+    public static int findMin(Node root) {
+        if (root == null)
+            return -1;
+        while (root.getLeftChild() != null) {
             root = root.getLeftChild();
         }
         return root.getData();
     }
 
-    public static int findKthMax(Node root, int k){
+    public static int findKthMax(Node root, int k) {
         StringBuilder result = new StringBuilder();
         result = inOrderTraversal(root, result);
         String[] array = result.toString().split(",");
-        if((array.length - k) >= 0) return Integer.parseInt(array[array.length - k]);
+        if ((array.length - k) >= 0)
+            return Integer.parseInt(array[array.length - k]);
         return -1;
     }
 
-    public static StringBuilder inOrderTraversal(Node root, StringBuilder result){
-        if(root.getLeftChild() != null) inOrderTraversal(root.getLeftChild(), result);
+    public static StringBuilder inOrderTraversal(Node root, StringBuilder result) {
+        if (root.getLeftChild() != null)
+            inOrderTraversal(root.getLeftChild(), result);
         result.append(root.getData() + ",");
 
-        if(root.getRightChild() != null) inOrderTraversal(root.getRightChild(), result);
+        if (root.getRightChild() != null)
+            inOrderTraversal(root.getRightChild(), result);
         return result;
     }
 
-    public static String findAncestors(Node root, int k){
+    public static String findAncestors(Node root, int k) {
         String result = " ";
         Node tempNode = root;
-        while(tempNode != null && tempNode.getData() != k){
+        while (tempNode != null && tempNode.getData() != k) {
             result += tempNode.getData() + ",";
-            if(k <= tempNode.getData()){
+            if (k <= tempNode.getData()) {
                 tempNode = tempNode.getLeftChild();
-            } else{
+            } else {
                 tempNode = tempNode.getRightChild();
             }
         }
-        if(tempNode == null){
+        if (tempNode == null) {
             return "";
         }
         return result;
     }
 
-    public static int findHeight(Node root){
-        if(root == null) return -1;
-        else{
+    public static int findHeight(Node root) {
+        if (root == null)
+            return -1;
+        else {
             return Math.max(findHeight(root.getLeftChild()), findHeight(root.getRightChild())) + 1;
         }
+    }
+
+    public static String findKNodes(Node root, int k) {
+        StringBuilder result = new StringBuilder();
+        result = findK(root, k, result);
+
+        return result.toString();
+    }
+
+    public static StringBuilder findK(Node root, int k, StringBuilder result) {
+        if (root == null)
+            return null;
+
+        if (k == 0) {
+            result.append(root.getData() + ",");
+        }
+
+        else {
+            findK(root.getLeftChild(), k - 1, result);
+            findK(root.getRightChild(), k - 1, result);
+        }
+        return result;
     }
 
 }
