@@ -76,5 +76,34 @@ public class BinarySearchTreeRecursive {
         else 
             return findMin(root.getLeftChild());
     }
+
+    class checkKthMax{
+        static int counter;
+        public static int findKthMax(Node root, int k){
+            counter = 0;
+            Node node = findKthMaxRecursive(root, k);
+            if(node!= null) return node.getData();
+            return -1;
+        }
+
+        public static Node findKthMaxRecursive(Node root, int k){
+            if(root == null){
+                return null;
+            }
+
+            Node node = findKthMaxRecursive(root.getRightChild(), k); //get the right child
+
+            if(counter != k){
+                counter++; //increment counter if kth element is not found
+                node = root;
+            }
+
+            if(counter == k){
+                return node;
+            } else {
+                return findKthMaxRecursive(root.getLeftChild(), k);
+            }
+        }
+    }
     
 }

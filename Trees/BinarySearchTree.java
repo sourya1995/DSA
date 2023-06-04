@@ -179,4 +179,20 @@ public class BinarySearchTree {
         return root.getData();
     }
 
+    public static int findKthMax(Node root, int k){
+        StringBuilder result = new StringBuilder();
+        result = inOrderTraversal(root, result);
+        String[] array = result.toString().split(",");
+        if((array.length - k) >= 0) return Integer.parseInt(array[array.length - k]);
+        return -1;
+    }
+
+    public static StringBuilder inOrderTraversal(Node root, StringBuilder result){
+        if(root.getLeftChild() != null) inOrderTraversal(root.getLeftChild(), result);
+        result.append(root.getData() + ",");
+
+        if(root.getRightChild() != null) inOrderTraversal(root.getRightChild(), result);
+        return result;
+    }
+
 }
