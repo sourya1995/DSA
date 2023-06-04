@@ -212,4 +212,11 @@ public class BinarySearchTree {
         return result;
     }
 
+    public static int findHeight(Node root){
+        if(root == null) return -1;
+        else{
+            return Math.max(findHeight(root.getLeftChild()), findHeight(root.getRightChild())) + 1;
+        }
+    }
+
 }
