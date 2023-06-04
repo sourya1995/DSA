@@ -99,5 +99,20 @@ public class Trie {
         deleteHelper(key, root, key.length(), 0);
     }
 
+    public static int totalWords(TrieNode root){
+        int result = 0;
+        if(root.isEndWord){
+            result++;
+        }
+
+        for(int i =0; i < 26; i++){
+            if(root.children[i] != null){
+                result += totalWords(root.children[i]);
+            }
+            
+        }
+        return result; //this is an exponential algorithm!
+    }
+
   
 }
