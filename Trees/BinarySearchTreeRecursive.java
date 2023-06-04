@@ -27,6 +27,28 @@ public class BinarySearchTreeRecursive {
         return currentNode;
     }
 
+    public Node search(int value){
+        if(isEmpty()){
+            return null;
+        }
+
+        return searchRecursive(root, value);
+    }
+
+    public Node searchRecursive(Node currentNode, int value){
+        if(currentNode == null || currentNode.getData() == value){
+            return currentNode;
+        }
+
+        if(currentNode.getData() > value){
+            return searchRecursive(currentNode.getLeftChild(), value);
+        }
+
+        else {
+            return searchRecursive(currentNode.getRightChild(), value);
+        }
+    }
+
     public boolean add(int value){
         root = recursive_insert(this.root, value);
         return true;

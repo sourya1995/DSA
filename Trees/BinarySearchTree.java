@@ -48,6 +48,29 @@ public class BinarySearchTree {
         return root == null;
     }
 
+    public Node search(int value) {
+        if(isEmpty()){
+            return null;
+        }
+
+        Node currentNode = this.root;
+
+        while(currentNode != null){
+            if(currentNode.getData() == value){
+                return currentNode;
+            }
+
+            if(currentNode.getData() > value){
+                return currentNode.getLeftChild();
+            }
+            else
+             return currentNode.getRightChild();
+        }
+
+        System.out.println("Not found in the tree");
+        return null;
+    }
+
     public void printTree(Node current) {
         if (current == null)
             return;
