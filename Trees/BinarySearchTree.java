@@ -49,26 +49,96 @@ public class BinarySearchTree {
     }
 
     public Node search(int value) {
-        if(isEmpty()){
+        if (isEmpty()) {
             return null;
         }
 
         Node currentNode = this.root;
 
-        while(currentNode != null){
-            if(currentNode.getData() == value){
+        while (currentNode != null) {
+            if (currentNode.getData() == value) {
                 return currentNode;
             }
 
-            if(currentNode.getData() > value){
+            if (currentNode.getData() > value) {
                 return currentNode.getLeftChild();
-            }
-            else
-             return currentNode.getRightChild();
+            } else
+                return currentNode.getRightChild();
         }
 
         System.out.println("Not found in the tree");
         return null;
+    }
+
+    boolean delete(int value, Node currentNode) {
+        if (root == null) {
+            return false;
+        }
+
+        Node parent = null;
+        while (currentNode != null && (currentNode.getData() != value)) {
+            parent = currentNode;
+            if (currentNode.getData() > value) {
+                currentNode = currentNode.getLeftChild();
+            } else
+                currentNode = currentNode.getRightChild();
+        }
+
+        if (currentNode == null) {
+            return false;
+        }
+
+        else if (currentNode.getLeftChild() == null && currentNode.getRightChild() == null) {
+            if (root.getData() == currentNode.getData()) {
+                setRoot(null);
+                return true;
+            } else if (currentNode.getData() < parent.getData()) {
+                parent.setLeftChild(null);
+                return true;
+            } else {
+                parent.setRightChild(null);
+                return true;
+            }
+        } else if (currentNode.getRightChild() == null) {
+            if (root.getData() == currentNode.getData()) {
+                setRoot(currentNode.getLeftChild());
+                return true;
+            } else if (currentNode.getData() < parent.getData()) {
+                parent.setLeftChild(currentNode.getLeftChild());
+                return true;
+            } else {
+                parent.setRightChild(currentNode.getLeftChild());
+                return true;
+            }
+        } else if (currentNode.getLeftChild() == null) {
+            if (root.getData() == currentNode.getData()) {
+                setRoot(currentNode.getRightChild());
+                return true;
+            } else if (currentNode.getData() < parent.getData()) {
+                parent.setLeftChild(currentNode.getRightChild());
+                return true;
+            } else {
+                parent.setRightChild(currentNode.getRightChild());
+                return true;
+            }
+
+        } else {
+            Node leastNode = findLeastNode(currentNode.getRightChild());
+            int temp = leastNode.getData();
+            delete(temp, root);
+            currentNode.setData(temp);
+            return true;
+        }
+
+    }
+
+    private Node findLeastNode(Node currentNode) {
+        Node temp = currentNode;
+
+        while (temp.getLeftChild() != null) {
+            temp = temp.getLeftChild();
+        }
+        return temp;
     }
 
     public void printTree(Node current) {
