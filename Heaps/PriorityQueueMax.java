@@ -1,10 +1,7 @@
 package Heaps;
 
 public class PriorityQueueMax {
-
-    public static void main(String[] args){
-        result = findKMax(["100", "200"], 1);
-    }
+  
     private static int[] findKMax(int[] arr, int k){
         int arraySize = arr.length;
         int[] result = new int[k];
