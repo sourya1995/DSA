@@ -25,7 +25,7 @@ public class Linear {
 
     public static int min_index(int array[], int array_size) {
         int min_index = 0;
-        int min_value = Integer.MAX_VALUE;
+        int min_value = Integer.MIN_VALUE;
         for (int i = 0; i < array_size; i++) {
             if (min_value > array[i]) {
                 min_value = array[i];
