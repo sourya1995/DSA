@@ -1,8 +1,10 @@
 package Algorithms;
 import Algorithms.Sorting.QuickSort;
+import Algorithms.BruteForce.BinarySearch;
 
 public class TwoNumbersAddToN {
     static QuickSort obj = new QuickSort();
+    static BinarySearch BS = new BinarySearch();
     public static int[] findSum(int[] arr, int n){
         int[] result = new int[2];
         for(int i = 0; i < arr.length; i++){
@@ -38,6 +40,21 @@ public class TwoNumbersAddToN {
         }
         return arr;
        
+    }
+
+    public static int[] findSumQuickSortBSearch(int[] arr, int n) {
+        int result[] = new int[2];
+        QuickSort.QuickSort(arr, 0, arr.length - 1);
+        int foundIndex = 0, arrSize = arr.length;
+
+        for(int i = 0; i < arrSize; i++){
+            foundIndex = BinarySearch.binarySearch(arrSize, arr,  n -arr[i]);
+            if(foundIndex != -1){
+                result[0] = arr[i];
+                result[1] = arr[foundIndex];
+            }
+        }
+        return result;
     }
     
 }

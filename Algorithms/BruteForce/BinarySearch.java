@@ -1,7 +1,7 @@
 package Algorithms.BruteForce;
 
 public class BinarySearch {
-    static int binarySearch(int s, int arr[], int arrSize) {
+    public static int binarySearch(int s, int arr[], int arrSize) {
         if (arrSize <= 0) {
             return -1;
         }
