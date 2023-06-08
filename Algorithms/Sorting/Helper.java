@@ -10,6 +10,12 @@ class Helper {
         }
     }
 
+    static void swap(int[] array, int i, int j){
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
     static int findMin(int[] array, int start, int end) {
         if(end <= 0  || start < 0){
             return 0;
