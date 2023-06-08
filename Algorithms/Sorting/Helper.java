@@ -2,7 +2,7 @@ package Algorithms.Sorting;
 
 import java.util.*;
 
-class Helper {
+public class Helper {
     static void printArray(int[] array, int arrSize) {
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i] + " ");
