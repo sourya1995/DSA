@@ -24,18 +24,12 @@ public class Graph {
 
     public void printGraph() {
         System.out.println("Adjacency list of directed graph: ");
-        for (int i = 0; i < vertices; i++) {
-            if (adjacencyList[i] != null) {
-                System.out.println("|" + i + "| => ");
-                DoublyLinkedList<Integer>.Node temp = adjacencyList[i].getHeadNode();
-                while (temp != null) {
-                    System.out.println("[" + temp.data + "] ->");
-                    temp = temp.nextNode;
-                }
-                System.out.println("null");
-            } else {
-                System.out.println("|" + i + "| =>" + "null");
-            }
+        for (int v = 0; v < this.vertices; v++) {
+           System.out.println(v);
+           for(Integer pCrawl : this.adjacencyList[v]) {
+                System.out.println("->" + pCrawl);
+           }
+           System.out.println("\n");
         }
     }
 
