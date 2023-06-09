@@ -1,22 +1,24 @@
 package Algorithms.Graphs;
 
+import java.util.LinkedList;
+
 public class Graph {
     int vertices;
-    DoublyLinkedList<Integer> adjacencyList[];
+    LinkedList<Integer> adjacencyList[];
 
     @SuppressWarnings("unchecked")
     public Graph(int vertices) {
         this.vertices = vertices;
-        adjacencyList = new DoublyLinkedList[vertices];
+        this.adjacencyList = new LinkedList[vertices];
 
         for (int i = 0; i < vertices; i++) {
-            adjacencyList[i] = new DoublyLinkedList<>();
+            this.adjacencyList[i] = new LinkedList<>();
         }
     }
 
     public void addEdge(int source, int destination) {
         if (source < vertices && destination < vertices) {
-            this.adjacencyList[source].insertAtEnd(destination);
+            this.adjacencyList[source].add(destination);
         }
     }
 
@@ -35,6 +37,14 @@ public class Graph {
                 System.out.println("|" + i + "| =>" + "null");
             }
         }
+    }
+
+    public int getVertices(){
+        return this.vertices;
+    }
+
+    public LinkedList<Integer> []getAdjacencyList() {
+        return this.adjacencyList;
     }
 
 }
