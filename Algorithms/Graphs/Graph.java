@@ -1,5 +1,6 @@
 package Algorithms.Graphs;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Graph {
@@ -39,6 +40,17 @@ public class Graph {
 
     public LinkedList<Integer> []getAdjacencyList() {
         return this.adjacencyList;
+    }
+
+    public Graph getTranspose(){
+        Graph graph = new Graph(vertices);
+        for(int v = 0; v < vertices; v++) {
+            Iterator<Integer> i = adjacencyList[v].listIterator();
+            while(i.hasNext()) {
+                graph.adjacencyList[i.next()].add(v);
+            }
+        }
+        return graph;
     }
 
 }
