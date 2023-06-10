@@ -53,4 +53,18 @@ public class Graph {
         return graph;
     }
 
+    public void dfsTraversal(int v, boolean visited[]){
+        visited[v] = true;
+        int source = 0;
+
+        Iterator<Integer> i = adjacencyList[v].iterator();
+        Integer temp;
+        while(i.hasNext()){
+            temp = i.next();
+            if(!visited[temp]){
+                dfsTraversal(temp, visited);
+            }
+        }
+    }
+
 }
