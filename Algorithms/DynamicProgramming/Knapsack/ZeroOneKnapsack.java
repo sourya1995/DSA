@@ -1,3 +1,4 @@
+package Algorithms.DynamicProgramming.Knapsack;
 public class ZeroOneKnapsack{
     public static int knapSack(int[] profits, int profitsLength, int[] weights, int weightsLength, int capacity, int currentindex) {
         if(capacity <= 0 || currentindex >= profitsLength || currentindex < 0 || weightsLength != profitsLength) 
