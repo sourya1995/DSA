@@ -41,20 +41,20 @@ public class SearchInRotatedSortedArray {
             }
 
             else {
-                return binarySearch(nums, end + 1, end, target)
+                return binarySearch(nums, end + 1, end, target);
             }
         }
 
         else {
             if(nums[mid] <= target && target <= nums[end]){
-                return binarySearch(nums, mid + 1, end, target)
+                return binarySearch(nums, mid + 1, end, target);
             }
 
             else {
-                return binarySearch(nums, start, mid - 1, target)
+                return binarySearch(nums, start, mid - 1, target);
             }
         }
-        return -1;
+        
     }
 
     static int binarySearchRotated(int[] nums, int target){
