@@ -36,7 +36,7 @@ public class RotateArrayByNelements {
         List<Integer> temp = new ArrayList<Integer>();
 
         for (int i = len - n; i < len; i++) {
-            temp.add(nums.get(i))
+            temp.add(nums.get(i));
         }
 
         for (int i = len - 1; i>=n; i--){
