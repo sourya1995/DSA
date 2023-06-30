@@ -17,4 +17,16 @@ public class ReverseSLL {
         }
         return reversedList;
     }
+
+    public static LinkedListNode reverseRecurse(LinkedListNode head) {
+        if (head == null || head.next == null)
+            return head;
+
+        LinkedListNode reversed = reverseRecurse(head.next);
+        head.next.next = head;
+
+        head.next = null;
+
+        return reversed;
+    }
 }
