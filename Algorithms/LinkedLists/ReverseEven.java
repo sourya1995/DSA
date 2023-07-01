@@ -28,4 +28,22 @@ public class ReverseEven {
 
         return head;
     }
+
+    public static LinkedListNode reverseEvenNodes(LinkedListNode head){
+        LinkedListNode curr = head;
+        LinkedListNode listEven = null;
+
+        while(curr != null && curr.next != null){
+            LinkedListNode even = curr.next;
+            curr.next = even.next;
+
+            even.next = listEven;
+            listEven = even;
+            curr = curr.next;
+
+
+        }
+
+        return mergeAlternating(head, listEven);
+    }
 }
