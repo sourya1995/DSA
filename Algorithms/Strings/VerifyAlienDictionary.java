@@ -1,5 +1,6 @@
 package Algorithms.Strings;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class VerifyAlienDictionary {
