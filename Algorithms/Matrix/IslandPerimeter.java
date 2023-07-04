@@ -6,7 +6,7 @@ public class IslandPerimeter {
         int cols = grid[0].length;
 
         int result = 0;
-        for (int r = 0; r < rows; i++) {
+        for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
                 if (grid[r][c] == 1) {
                     result += 4;
